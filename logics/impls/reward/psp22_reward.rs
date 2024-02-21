@@ -62,6 +62,10 @@ where
         self._has_pending_rewards_from(from)
     }
 
+    default fn has_pending_rewards_from(&self, from: AccountId) -> bool{
+        self._has_pending_rewards_from(from)
+    }
+
     default fn _has_pending_rewards_from(&self, from: AccountId) -> bool{
         self.data::<Data>().pending_rewards.contains(&from)
     }
@@ -74,6 +78,10 @@ where
 
     default fn claim(&mut self) -> Result<(), RewardError> {
         let from = Self::env().caller();
+        self._claim_from(from)
+    }
+
+    default fn claim_from(&mut self, from: AccountId) -> Result<(), RewardError>  {
         self._claim_from(from)
     }
 

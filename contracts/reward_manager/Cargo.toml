@@ -1,14 +1,18 @@
 [package]
 name = "reward_manager"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["guigou"]
 edition = "2021"
 
 [dependencies]
-ink = { version = "4.2.0", default-features = false}
+ink = { version = "=4.2.0", default-features = false}
+ink_env = { version = "=4.2.0", default-features = false}
+ink_primitives = { version = "=4.2.0", default-features = false}
+ink_macro = { version = "=4.2.0", default-features = false}
+ink_storage = { version = "=4.2.0", default-features = false}
 scale = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
 scale-info = { version = "2.6.0", default-features = false, features = ["derive"], optional = true }
-openbrush = { version = "3.0.0", git = "https://github.com/727-Ventures/openbrush-contracts", default-features = false, features = ["access_control"] }
+openbrush = { tag = "3.1.0", git = "https://github.com/Brushfam/openbrush-contracts" , default-features = false, features = ["access_control"] }
 lucky = { path = "../../logics", default-features = false }
 
 [lib]
@@ -20,6 +24,10 @@ crate-type = ["cdylib", "rlib"]
 default = ["std"]
 std = [
     "ink/std",
+    "ink_env/std",
+    "ink_primitives/std",
+    "ink_macro/std",
+    "ink_storage/std",
     "scale/std",
     "scale-info/std",
     "openbrush/std",

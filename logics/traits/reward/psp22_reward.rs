@@ -17,6 +17,10 @@ pub trait Psp22Reward {
     #[ink(message)]
     fn has_pending_rewards(&self) -> bool;
 
+    /// return true if the given account has pending rewards
+    #[ink(message)]
+    fn has_pending_rewards_from(&self, from: AccountId) -> bool;
+
     fn _has_pending_rewards_from(&self, from: AccountId) -> bool;
 
     /// return the pending rewards for a given account.
@@ -30,6 +34,9 @@ pub trait Psp22Reward {
 
     /// claim all pending rewards for the given account
     /// After claiming, there is not anymore pending rewards for this account
+    #[ink(message)]
+    fn claim_from(&mut self, from: AccountId) -> Result<(), RewardError> ;
+
     fn _claim_from(&mut self, from: AccountId) -> Result<(), RewardError> ;
 
 }
